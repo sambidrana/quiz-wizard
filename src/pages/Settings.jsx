@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SelectField from "../components/SelectField";
-import TextField from "../components/TextField";
+import FieldText from "../components/FieldText";
 
 const Settings = () => {
   const [categories, setCategories] = useState([]);
@@ -34,6 +34,7 @@ const Settings = () => {
     fetchData();
   }, []);
 
+
   console.log(category, difficulty, type, noOfQuestion);
 
   const difficultyOpt = [
@@ -64,7 +65,7 @@ const Settings = () => {
 
   return (
     <div>
-      <h1>Hello {playerName}</h1>
+      <h1>Hello, {playerName}</h1>
       <form onSubmit={hadleFormSubmit}>
         <SelectField
           name="Category"
@@ -77,7 +78,7 @@ const Settings = () => {
           onChange={setDifficulty}
         />
         <SelectField name="Type" categories={typeOpt} onChange={setType} />
-        <TextField name="No of Questions" onChange={setNoOfQuestion} />
+        <FieldText name="No of Questions" onChange={setNoOfQuestion} />
 
         {<button> Get Started </button>}
       </form>

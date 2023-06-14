@@ -7,6 +7,7 @@ import Questions from './pages/Questions'
 import Result from './pages/Result'
 import Nav from './components/Nav'
 import { app } from './firebase-config'
+import { Container, Box, Typography } from "@mui/material";
 
 function App() {
   const [category, setCategory] = useState("");
@@ -18,14 +19,20 @@ function App() {
 
 
   return (
-   <Router>
-    <Nav/>
+    <Router>
+    <Container maxWidth="lg" >
+      <Box textAlign="center" mt={2}>
+        <Nav/>
+      </Box>
+      <Box textAlign="center" mt={20}>
     <Routes>
     <Route path='/' element={<Home/>}> </Route>
     <Route path='/settings' element={<Settings setCategory={setCategory} setDifficulty={setDifficulty} setType={setType} setNoOfQuestion={setNoOfQuestion} />} />
     <Route path="/questions" element={<Questions category={category} difficulty={difficulty} type={type} noOfQuestion={noOfQuestion} />} />
     <Route path='/result' element={<Result score={score}/>}> </Route>
     </Routes>
+    </Box>
+    </Container>
    </Router>
   )
 }

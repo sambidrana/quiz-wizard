@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Box, FormControl, MenuItem, InputLabel, Select } from "@mui/material";
 
 const SelectField = (props) => {
   const { name, categories, onChange } = props;
@@ -20,23 +21,24 @@ const SelectField = (props) => {
   };
 
   return (
-    <div>
-      <label htmlFor="">{name}</label>
-      <select
-        name=""
-        id=""
+    <Box mt={3} >
+    <FormControl variant="standard"  fullWidth>
+      <InputLabel> {name} </InputLabel>
+      <Select fullWidth
         value={selectedOption}
         onChange={_handleSelectChange}
+        color="secondary"
+        sx={{ color: 'red' }} 
       >
-        <option value="">Select an option</option>
         {Array.isArray(categories) &&
           categories.map((category) => (
-            <option key={category.id} value={category.id}>
+            <MenuItem key={category.id} value={category.id}>
               {category.name}
-            </option>
+            </MenuItem>
           ))}
-      </select>
-    </div>
+      </Select>
+    </FormControl>
+    </Box>
   );
 };
 

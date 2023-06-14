@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { database } from "../firebase-config";
 import { addDoc, collection } from "firebase/firestore";
+import {decode} from 'html-entities';
+
 
 const Questions = () => {
   const location = useLocation();
@@ -69,12 +71,11 @@ const Questions = () => {
 
   return (
     <div>
-      <h1>Questions</h1>
-      <h3>Question: {currentQuestion.question}</h3>
+      <h1>{decode(currentQuestion.question)}</h1>
       <div>
         {shuffledAnswers.map((answer, index) => (
           <button key={index} onClick={() => handleAnswerClick(answer === currentQuestion.correct_answer)}>
-            {answer}
+            {decode(answer)}
           </button>
         ))}
       </div>

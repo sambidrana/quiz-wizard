@@ -1,10 +1,12 @@
+import { Box, TextField, Button } from "@mui/material";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const UserDetails = () => {
   const [user, setUser] = useState("");
   const navigate = useNavigate();
-  console.log(user)
+  console.log(user);
 
   const _handleSubmit = (e) => {
     e.preventDefault();
@@ -13,28 +15,34 @@ const UserDetails = () => {
   };
 
   const getPlayerName = (value) => {
-        setUser(value)
-        localStorage.setItem('Playername', value)
-  }
+    setUser(value);
+    localStorage.setItem("Playername", value);
+  };
 
   return (
-    <form onSubmit={_handleSubmit}>
-      <label htmlFor="username">
-        Username <br /> <br />
-      </label>
+    <Box>
+      <form onSubmit={_handleSubmit} className="user-form">
+        <TextField
+          value={user}
+          onChange={(e) => getPlayerName(e.target.value)}
+          label="Enter Player Name"
+          variant="standard"
+          color="secondary"
+          sx={{ width: '300px'}}
+          InputProps={{
+            sx: {
+              fontSize: '30px',
+            },
+          }}
 
-      <input
-        type="text"
-        id="username"
-        value={user}
-        placeholder="Eg: John Wick"
-        onChange={(e) => getPlayerName(e.target.value)}
-      />
-      <div>
-        <br />
-        <button>Enter</button>
-      </div>
-    </form>
+        />
+        <Box mt={5}>
+          <Button type="submit" color="secondary" size="large">
+            Enter
+          </Button>
+        </Box>
+      </form>
+    </Box>
   );
 };
 

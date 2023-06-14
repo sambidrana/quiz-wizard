@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Box, TextField,  } from "@mui/material";
 
-const TextField = (props) => {
+const FieldText = (props) => {
   const { name, onChange } = props;
   const [questionAmt, setQuestionAmt] = useState("");
 
@@ -11,16 +12,18 @@ const TextField = (props) => {
     // console.log(e.target.value)
   };
   return (
-    <div>
-      <label htmlFor="">{name}</label>
-      <input
+    <Box mt={2}  >
+      <TextField
         type="number"
         value={questionAmt}
-        placeholder="eg: 10"
         onChange={_handleQuestionChange}
+        variant="standard"
+          color="secondary"
+          label="Number of Questions?"
+          
       />
-    </div>
+    </Box>
   );
 };
 
-export default TextField;
+export default FieldText;
