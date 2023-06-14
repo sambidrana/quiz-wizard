@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const UserDetails = () => {
   const [user, setUser] = useState("");
   const navigate = useNavigate();
+  console.log(user)
 
   const _handleSubmit = (e) => {
     e.preventDefault();
@@ -11,9 +12,10 @@ const UserDetails = () => {
     console.log("Submitted username:", user);
   };
 
-  const _handleUserChange = (e) => {
-    setUser(e.target.value);
-  };
+  const getPlayerName = (value) => {
+        setUser(value)
+        localStorage.setItem('Playername', value)
+  }
 
   return (
     <form onSubmit={_handleSubmit}>
@@ -24,8 +26,9 @@ const UserDetails = () => {
       <input
         type="text"
         id="username"
+        value={user}
         placeholder="Eg: John Wick"
-        onChange={_handleUserChange}
+        onChange={(e) => getPlayerName(e.target.value)}
       />
       <div>
         <br />

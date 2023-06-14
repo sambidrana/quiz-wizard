@@ -1,13 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { database } from "../firebase-config";
+import { addDoc, collection } from "firebase/firestore";
 
 const Questions = () => {
   const location = useLocation();
-  const { category, difficulty, type, noOfQuestion } = location.state || {};
+  const { category, difficulty, type, noOfQuestion, playerName } = location.state || {};
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const databaseRef = collection(database, "Leaderboard"); //connection to the db
+
   
   const navigate = useNavigate();
 
@@ -34,12 +38,22 @@ const Questions = () => {
     }
 
     if (currentQuestionIndex === questions.length - 1) {
-        const finalScore = isCorrect ? score + 1 : score; // Update the score to include the last question's answer
-        navigate("/result", {
-          state: {
-            score: finalScore,
-          },
-    });
+      const finalScore = isCorrect ? score + 1 : score; // Update the score to include the last question's answer
+        addDoc(databaseRef, {
+          playerName: playerName,
+          category: category,
+          difficulty: difficulty,
+          noOfQuestion: noOfQuestion,
+          type: type,
+          score: finalScore
+        }).then(() => {
+          navigate("/result", {
+            state: {
+              score: finalScore,
+            },
+      });
+        })
+        
     } else {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     }

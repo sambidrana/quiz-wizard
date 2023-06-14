@@ -1,6 +1,7 @@
 import UserDetails from "../components/UserDetails";
 
 const Home = () => {
+
     return (
 
         <div>

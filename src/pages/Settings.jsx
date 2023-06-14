@@ -8,6 +8,7 @@ const Settings = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const [playerName, setPlayerName] = useState('')
 
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
@@ -22,6 +23,7 @@ const Settings = () => {
         const response = await axios.get(CATEGORY_URL);
         console.log(response.data.trivia_categories);
         setCategories(response.data.trivia_categories);
+        setPlayerName(localStorage.getItem('Playername'))
         setLoading(false);
       } catch (error) {
         console.log("Error:", error);
@@ -55,13 +57,14 @@ const Settings = () => {
         difficulty: difficulty,
         type: type,
         noOfQuestion: noOfQuestion,
+        playerName: playerName
       },
     });
   };
 
   return (
     <div>
-      <h1>Settings Coming Soon</h1>
+      <h1>Hello {playerName}</h1>
       <form onSubmit={hadleFormSubmit}>
         <SelectField
           name="Category"

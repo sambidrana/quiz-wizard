@@ -6,6 +6,7 @@ import Settings from './pages/Settings'
 import Questions from './pages/Questions'
 import Result from './pages/Result'
 import Nav from './components/Nav'
+import { app } from './firebase-config'
 
 function App() {
   const [category, setCategory] = useState("");
