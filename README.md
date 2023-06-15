@@ -27,7 +27,7 @@ Quiz Whizz is a web application that allows players to test their knowledge by t
 
 To run Quiz Whizz locally, follow these steps:
 
-1. Clone the repository: `git clone <repository_url>`
+1. Clone the repository: `git clone <https://github.com/sambidrana/quiz-wizard>`
 2. Navigate to the project directory: `cd quiz-whizz`
 3. Install the dependencies: `npm install`
 4. Set up Firebase:
