@@ -28,7 +28,8 @@ const SelectField = (props) => {
         value={selectedOption}
         onChange={_handleSelectChange}
         color="secondary"
-        sx={{ color: 'red' }} 
+        sx={{  fontSize: '30px' }} 
+        
       >
         {Array.isArray(categories) &&
           categories.map((category) => (

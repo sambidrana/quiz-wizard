@@ -26,6 +26,9 @@ const FieldText = (props) => {
           color="secondary"
           label="Number of Questions?"
           sx={{ width: '200px' }} 
+          inputProps={{
+            style: { textAlign: 'center', fontSize: '30px' } 
+          }}
       />
     </Box>
   );
