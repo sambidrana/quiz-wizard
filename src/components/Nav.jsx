@@ -5,7 +5,7 @@ const Nav = () => {
   const location = useLocation();
 
   const checkPlayer = localStorage.getItem("Playername");
-  console.log(checkPlayer);
+  // console.log(checkPlayer);
 
   return (
     <div className="navbar">

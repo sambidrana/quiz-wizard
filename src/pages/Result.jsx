@@ -3,12 +3,13 @@ import { database } from "../firebase-config";
 import { getDocs, collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import Table from "../components/Table";
-import { Box, Button } from "@mui/material";
+import { Box, Button, CircularProgress, } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 const Result = (props) => {
   const location = useLocation();
   const { score } = location.state || {};
   const [leaderBoardData, setLeaderBoardData] = useState([]);
+  const [loading, setLoading] = useState(true); 
   const navigate = useNavigate();
 
   const databaseRef = collection(database, "Leaderboard");
@@ -19,12 +20,13 @@ const Result = (props) => {
 
   const getData = async () => {
     const data = await getDocs(databaseRef);
-    console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    // console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     setLeaderBoardData(
       data.docs
         .map((doc) => ({ ...doc.data(), id: doc.id }))
         .sort((a, b) => parseFloat(b.score) - parseFloat(a.score))
     );
+    setLoading(false);
   };
 
   const handlePlayAgain = () => {
@@ -35,6 +37,14 @@ const Result = (props) => {
     localStorage.clear();
     navigate("/");
   };
+
+  if (loading) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="200px">
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <Box>

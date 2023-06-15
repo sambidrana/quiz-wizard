@@ -10,7 +10,8 @@ const Settings = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const [playerName, setPlayerName] = useState('')
+  const [playerName, setPlayerName] = useState("");
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
@@ -20,24 +21,25 @@ const Settings = () => {
   const CATEGORY_URL = `https://opentdb.com/api_category.php`;
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(CATEGORY_URL);
-        console.log(response.data.trivia_categories);
-        setCategories(response.data.trivia_categories);
-        setPlayerName(localStorage.getItem('Playername'))
-        setLoading(false);
-      } catch (error) {
-        console.log("Error:", error);
-        setLoading(false);
-      }
+    const fetchData = () => {
+      axios
+        .get(CATEGORY_URL)
+        .then((response) => {
+          // console.log(response.data.trivia_categories);
+          setCategories(response.data.trivia_categories);
+          setPlayerName(localStorage.getItem("Playername"));
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log("Error:", error);
+          setLoading(false);
+        });
     };
 
     fetchData();
   }, []);
 
-
-  console.log(category, difficulty, type, noOfQuestion);
+  // console.log(category, difficulty, type, noOfQuestion);
 
   const difficultyOpt = [
     { id: "easy", name: "Easy" },
@@ -53,50 +55,44 @@ const Settings = () => {
   const hadleFormSubmit = (e) => {
     e.preventDefault();
     console.log(category, difficulty, type, noOfQuestion);
-
     navigate("/questions", {
       state: {
         category: category,
         difficulty: difficulty,
         type: type,
         noOfQuestion: noOfQuestion,
-        playerName: playerName
+        playerName: playerName,
       },
     });
   };
 
   return (
     <div>
-      {playerName ? (
-        <h1>Welcome, {playerName}</h1>
-      ): (
-        <CircularProgress />
-      )}
-    <div className="settings-container">
-      
+      {playerName ? <h1>Welcome, {playerName}</h1> : <CircularProgress />}
+      <div className="settings-container">
+        <form onSubmit={hadleFormSubmit}>
+          <SelectField
+            name="Category"
+            categories={categories}
+            onChange={setCategory}
+          />
+          <SelectField
+            name="Difficulty"
+            categories={difficultyOpt}
+            onChange={setDifficulty}
+          />
+          <SelectField name="Type" categories={typeOpt} onChange={setType} />
+          <FieldText name="No of Questions" onChange={setNoOfQuestion} />
 
-      <form onSubmit={hadleFormSubmit}>
-        <SelectField
-          name="Category"
-          categories={categories}
-          onChange={setCategory}
-        />
-        <SelectField
-          name="Difficulty"
-          categories={difficultyOpt}
-          onChange={setDifficulty}
-        />
-        <SelectField name="Type" categories={typeOpt} onChange={setType} />
-        <FieldText name="No of Questions" onChange={setNoOfQuestion} />
-        
-        <Box mt={5}>
-        <Button type="submit" variant="contained" sx={{ bgcolor: 'green' }}> Get Started </Button>
-
-        </Box>
-      </form>
+          <Box mt={5}>
+            <Button type="submit" variant="contained" sx={{ bgcolor: "green" }}>
+              {" "}
+              Get Started{" "}
+            </Button>
+          </Box>
+        </form>
+      </div>
     </div>
-    </div>
-
   );
 };
 

@@ -6,12 +6,12 @@ import { useNavigate } from "react-router-dom";
 const UserDetails = () => {
   const [user, setUser] = useState("");
   const navigate = useNavigate();
-  console.log(user);
+  // console.log(user);
 
   const _handleSubmit = (e) => {
     e.preventDefault();
     navigate("/settings");
-    console.log("Submitted username:", user);
+    // console.log("Submitted username:", user);
   };
 
   const getPlayerName = (value) => {
@@ -34,7 +34,7 @@ const UserDetails = () => {
               fontSize: '30px',
             },
           }}
-
+          required
         />
         <Box mt={5}>
           <Button type="submit" color="secondary" size="large">

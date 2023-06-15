@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Box, TextField,  } from "@mui/material";
-
 const FieldText = (props) => {
   const { name, onChange } = props;
   const [questionAmt, setQuestionAmt] = useState("");
