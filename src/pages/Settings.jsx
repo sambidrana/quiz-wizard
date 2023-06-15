@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SelectField from "../components/SelectField";
 import FieldText from "../components/FieldText";
+import { CircularProgress, Button } from "@mui/material";
+import { Box } from "@mui/system";
 
 const Settings = () => {
   const [categories, setCategories] = useState([]);
@@ -13,7 +15,7 @@ const Settings = () => {
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [type, setType] = useState("");
-  const [noOfQuestion, setNoOfQuestion] = useState("");
+  const [noOfQuestion, setNoOfQuestion] = useState("10");
 
   const CATEGORY_URL = `https://opentdb.com/api_category.php`;
 
@@ -65,7 +67,14 @@ const Settings = () => {
 
   return (
     <div>
-      <h1>Hello, {playerName}</h1>
+      {playerName ? (
+        <h1>Welcome, {playerName}</h1>
+      ): (
+        <CircularProgress />
+      )}
+    <div className="settings-container">
+      
+
       <form onSubmit={hadleFormSubmit}>
         <SelectField
           name="Category"
@@ -79,10 +88,15 @@ const Settings = () => {
         />
         <SelectField name="Type" categories={typeOpt} onChange={setType} />
         <FieldText name="No of Questions" onChange={setNoOfQuestion} />
+        
+        <Box mt={5}>
+        <Button type="submit" variant="contained" sx={{ bgcolor: 'green' }}> Get Started </Button>
 
-        {<button> Get Started </button>}
+        </Box>
       </form>
     </div>
+    </div>
+
   );
 };
 

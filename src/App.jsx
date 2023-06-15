@@ -8,6 +8,8 @@ import Result from './pages/Result'
 import Nav from './components/Nav'
 import { app } from './firebase-config'
 import { Container, Box, Typography } from "@mui/material";
+import { createTheme, ThemeProvider } from '@mui/material';
+
 
 function App() {
   const [category, setCategory] = useState("");
@@ -16,15 +18,22 @@ function App() {
   const [noOfQuestion, setNoOfQuestion] = useState("");
   const [score, setScore] = useState("")
 
+  const theme = createTheme({
+    typography: {
+      fontFamily: 'Caveat, cursive',
+    },
+  });
 
 
   return (
+    <ThemeProvider theme={theme}>
+
     <Router>
-    <Container maxWidth="lg" >
-      <Box textAlign="center" mt={2}>
+      <Box textAlign="center">
         <Nav/>
       </Box>
-      <Box textAlign="center" mt={20}>
+    <Container maxWidth="lg" >
+      <Box textAlign="center" mt={5}>
     <Routes>
     <Route path='/' element={<Home/>}> </Route>
     <Route path='/settings' element={<Settings setCategory={setCategory} setDifficulty={setDifficulty} setType={setType} setNoOfQuestion={setNoOfQuestion} />} />
@@ -34,6 +43,8 @@ function App() {
     </Box>
     </Container>
    </Router>
+   </ThemeProvider>
+
   )
 }
 

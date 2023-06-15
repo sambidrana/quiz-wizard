@@ -4,6 +4,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { database } from "../firebase-config";
 import { addDoc, collection } from "firebase/firestore";
 import {decode} from 'html-entities';
+import { Box, Typography, Button, CircularProgress } from "@mui/material";
+
 
 
 const Questions = () => {
@@ -62,7 +64,7 @@ const Questions = () => {
   };
 
   if (questions.length === 0) {
-    return <div>Loading...</div>;
+    return <Box mt={20}><CircularProgress/></Box>;
   }
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -70,17 +72,23 @@ const Questions = () => {
 
 
   return (
-    <div>
-      <h1>{decode(currentQuestion.question)}</h1>
-      <div>
-        {shuffledAnswers.map((answer, index) => (
-          <button key={index} onClick={() => handleAnswerClick(answer === currentQuestion.correct_answer)}>
-            {decode(answer)}
-          </button>
-        ))}
+    <Box >
+      <div className="score-keeper">
+      <h2>Your Score: {score} / {questions.length}</h2>
       </div>
-      <p>Score: {score}/{questions.length}</p>
-    </div>
+      <div className="question-box">
+      <h2 >{decode(currentQuestion.question)}</h2>
+      </div>
+      <Box className="ans-button-grid">
+        {shuffledAnswers.map((answer, index) => (
+          <Button key={index}  onClick={() => handleAnswerClick(answer === currentQuestion.correct_answer)} variant="contained" color="success" sx={{ width: '300px', marginBottom: '16px' }}
+          >
+            {decode(answer)}
+          </Button>
+        ))}
+      </Box >
+      
+    </Box>
   );
 };
 

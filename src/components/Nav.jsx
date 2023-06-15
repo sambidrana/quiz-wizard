@@ -1,14 +1,42 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { AppBar, Toolbar, Typography } from "@mui/material";
 
 const Nav = () => {
-    return (
-        <div>
-            <Link to="/">Home </Link> |
-            <Link to="/settings"> Settings</Link> |
-            <Link to="/questions"> Questions</Link> |
-            <Link to="/result"> Result</Link>
-        </div>
-    )
-}
+  const location = useLocation();
+
+  const checkPlayer = localStorage.getItem("Playername");
+  console.log(checkPlayer);
+
+  return (
+    <div className="navbar">
+      {location.pathname !== "/" && (
+        <Link to="/" style={{ textDecoration: "none" }} className="nav-home">
+          Home
+        </Link>
+      )}
+      {location.pathname !== "/result" &&
+        location.pathname !== "/questions" && (
+          <Link
+            to="/result"
+            style={{ textDecoration: "none" }}
+            className="nav-leaderboard"
+          >
+            Leaderboard
+          </Link>
+        )}
+      {checkPlayer &&
+        location.pathname !== "/" &&
+        location.pathname !== "/settings" && (
+          <Link
+            to="/settings"
+            style={{ textDecoration: "none" }}
+            className="nav-settings"
+          >
+            Settings
+          </Link>
+        )}
+    </div>
+  );
+};
 
 export default Nav;
