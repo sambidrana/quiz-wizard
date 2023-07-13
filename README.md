@@ -14,6 +14,9 @@ Quiz Whizz is a web application that allows players to test their knowledge by t
 - Firebase: A backend-as-a-service platform used for storing player names and leaderboard data.
 - Vite: A fast build tool for modern web development.
 
+## Deployed Link
+
+The application is deployed and can be accessed at: [Quiz Whizz](https://64b0885180313555399f9379--peppy-swan-96d8e4.netlify.app/)
 
 ## Features
 
