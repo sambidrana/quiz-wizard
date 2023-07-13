@@ -5,14 +5,15 @@ import { useEffect, useState } from "react";
 import Table from "../components/Table";
 import { Box, Button, CircularProgress, } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-const Result = (props) => {
+const Result = () => {
   const location = useLocation();
-  const { score } = location.state || {};
+  const { score, noOfQuestion } = location.state || {}; //default value is an empyt object. Firefox returned error without it.
   const [leaderBoardData, setLeaderBoardData] = useState([]);
   const [loading, setLoading] = useState(true); 
+  console.log(noOfQuestion)
   const navigate = useNavigate();
 
-  const databaseRef = collection(database, "Leaderboard");
+  const databaseRef = collection(database, "Leaderboard"); //referencing to the Leaderboard collection in Firebase
 
   useEffect(() => {
     getData();
@@ -20,12 +21,11 @@ const Result = (props) => {
 
   const getData = async () => {
     const data = await getDocs(databaseRef);
-    // console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    setLeaderBoardData(
-      data.docs
-        .map((doc) => ({ ...doc.data(), id: doc.id }))
-        .sort((a, b) => parseFloat(b.score) - parseFloat(a.score))
-    );
+    const sortedData = data.docs
+      .map((doc) => ({ ...doc.data(), id: doc.id }))
+      .sort((a, b) => parseFloat(b.score) - parseFloat(a.score)); // Sort leaderboard according to highest score
+    const top10Scores = sortedData.slice(0, 10); // Retrieve top 10 scores
+    setLeaderBoardData(top10Scores);
     setLoading(false);
   };
 
@@ -49,7 +49,7 @@ const Result = (props) => {
   return (
     <Box>
   <h2 className="leaderboard-heading">Leaderboard</h2>
-  {localStorage.getItem("Playername") ? <p> Your Score: {score}</p> : null}
+  {localStorage.getItem("Playername") && <h2> {localStorage.getItem("Playername")} you answered {score} out of {noOfQuestion} questions correctly</h2>}
   {localStorage.getItem("Playername") ? (
     <Box mb={5}>
       <Button variant="contained" color="primary" onClick={handlePlayAgain} sx={{ marginRight: '10px' }}>

@@ -7,7 +7,7 @@ const FieldText = (props) => {
   const _handleQuestionChange = (e) => {
     const noOfQuestion = e.target.value;
     if (noOfQuestion < 0) {
-    // Display an error message or perform any desired action
+    // Display an alert error message if negative no. entered
     alert("Question number should be positive");
   } else {
     setQuestionAmt(noOfQuestion.toString());

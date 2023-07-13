@@ -7,18 +7,17 @@ import { CircularProgress, Button } from "@mui/material";
 import { Box } from "@mui/system";
 
 const Settings = () => {
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const [categories, setCategories] = useState([]); // To list out categories in select field
+  const [loading, setLoading] = useState(true);
   const [playerName, setPlayerName] = useState("");
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(""); // To get the category id required to make the api call
   const [difficulty, setDifficulty] = useState("");
   const [type, setType] = useState("");
   const [noOfQuestion, setNoOfQuestion] = useState("10");
 
-  const CATEGORY_URL = `https://opentdb.com/api_category.php`;
+  const CATEGORY_URL = `https://opentdb.com/api_category.php`; //Gives a list of categories
 
   useEffect(() => {
     const fetchData = () => {
@@ -27,7 +26,7 @@ const Settings = () => {
         .then((response) => {
           // console.log(response.data.trivia_categories);
           setCategories(response.data.trivia_categories);
-          setPlayerName(localStorage.getItem("Playername"));
+          setPlayerName(localStorage.getItem("Playername")); //To get the player info from local Storage
           setLoading(false);
         })
         .catch((error) => {
@@ -55,7 +54,7 @@ const Settings = () => {
   const hadleFormSubmit = (e) => {
     e.preventDefault();
     console.log(category, difficulty, type, noOfQuestion);
-    navigate("/questions", {
+    navigate("/questions", { 
       state: {
         category: category,
         difficulty: difficulty,

@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { AppBar, Toolbar, Typography } from "@mui/material";
 
 const Nav = () => {
   const location = useLocation();
@@ -9,7 +8,8 @@ const Nav = () => {
 
   return (
     <div className="navbar">
-      {location.pathname !== "/" && (
+      { !checkPlayer &&
+      location.pathname !== "/" && (
         <Link to="/" style={{ textDecoration: "none" }} className="nav-home">
           Home
         </Link>
@@ -26,7 +26,8 @@ const Nav = () => {
         )}
       {checkPlayer &&
         location.pathname !== "/" &&
-        location.pathname !== "/settings" && (
+        location.pathname !== "/settings" && 
+          location.pathname !== "/result" && (
           <Link
             to="/settings"
             style={{ textDecoration: "none" }}
