@@ -24,7 +24,6 @@ const Settings = () => {
       axios
         .get(CATEGORY_URL)
         .then((response) => {
-          // console.log(response.data.trivia_categories);
           setCategories(response.data.trivia_categories);
           setPlayerName(localStorage.getItem("Playername")); //To get the player info from local Storage
           setLoading(false);
@@ -38,7 +37,6 @@ const Settings = () => {
     fetchData();
   }, []);
 
-  // console.log(category, difficulty, type, noOfQuestion);
 
   const difficultyOpt = [
     { id: "easy", name: "Easy" },
@@ -53,7 +51,6 @@ const Settings = () => {
 
   const hadleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(category, difficulty, type, noOfQuestion);
     navigate("/questions", { 
       state: {
         category: category,
