@@ -9,7 +9,7 @@
   background-image: url("/public/background.jpg");
   background-size: cover;
   background-repeat: no-repeat; 
-  height: 100vh;
+  height: 100%;
  }
  html, body {
   font-family: 'Caveat', cursive;
@@ -27,9 +27,9 @@
 
  .question-box {
   height: 300px;
-  margin-top: 60px;
+  margin-top: 30px;
   background-image: url("/public/bg-question.png");
-  background-size: 1100px 300px ;
+  background-size: 98% 300px ;
   background-repeat: no-repeat;
   background-position-y: 15px ;
   display: flex;
@@ -71,12 +71,13 @@
 
 /* Table */
 .leaderboard-container {
-  color: red;
-  font-size: 1.5rem;
   box-shadow: 1px 0 0 5px black;
+  width: 98%;
+  height: 25em;
+  overflow: scroll;
 }
 .leaderboard-heading {
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
 /* Home */
@@ -92,7 +93,7 @@
   border: 1px solid rgba(255, 255, 255, 0.448);
   border-radius: 10px;
   height: 15em;
-  width: 40em;
+  width: 70%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -141,19 +142,165 @@
 
 /* Media specific */
 @media all and (max-width: 1100px) {
-  .question-box {
-    background-size: 800px 300px ;
-   }
+ /* Home */
+ .user-detail-container {
+  height: 10em;
+  width: 50%;
+  margin-top: 4em;
+}
+.home-heading {
+  font-size: 2.5em;
+}
+/* question  */
+.score-keeper > h2 {
+  font-size: 25px;
+}
+.score-keeper {
+  margin-top: 20px;
+}
+.question-box {
+  background-size: 98% 305px ;
+  font-size: 0.75em;
+  margin-top: 10px;
+ }
+ /* Answers */
+ .ans-button-grid > button {
+  font-size: 0.75em;
+  margin-top: 2px;
+  width: 70%;
+  height: 70%;
+}
+ /* Result */
+.leaderboard-container {
+  width: 98%;
+  height: 20em;
+  overflow: scroll;
+}
+.leaderboard-heading {
+  font-size: 1.5em;
+}
 }
 
 @media all and (max-width: 750px) {
-  .question-box {
-    background-size: 510px 300px ;
-   }
+/* Home */
+.user-detail-container {
+  height: 10em;
+  width: 17em;
+  margin-top: 4em;
+}
+.home-heading {
+  font-size: 2.5em;
+}
+/* question  */
+.score-keeper > h2 {
+  font-size: 25px;
+}
+.score-keeper {
+  margin-top: 20px;
+}
+.question-box {
+  background-size: 98% 305px ;
+  font-size: 0.75em;
+  margin-top: 10px;
+ }
+ /* Answers */
+ .ans-button-grid > button {
+  font-size: 0.75em;
+  margin-top: 2px;
+  width: 70%;
+  height: 70%;
+}
+ /* Result */
+.leaderboard-container {
+  width: 98%;
+  height: 20em;
+  overflow: scroll;
+}
+.leaderboard-heading {
+  font-size: 1.5em;
+}
 }
 
 @media all and (max-width: 550px) {
+  /* Home */
+  .user-detail-container {
+    height: 10em;
+    width: 17em;
+    margin-top: 4em;
+  }
+  .home-heading {
+    font-size: 2.5em;
+  }
+  /* question  */
+  .score-keeper > h2 {
+    font-size: 25px;
+  }
+  .score-keeper {
+    margin-top: 20px;
+  }
   .question-box {
-    background-size: 410px 300px ;
+    background-size: 98% 305px ;
+    font-size: 0.75em;
+    margin-top: 10px;
    }
+   /* Answers */
+   .ans-button-grid > button {
+    font-size: 0.75em;
+    margin-top: 2px;
+    width: 70%;
+    height: 70%;
+  }
+   /* Result */
+  .leaderboard-container {
+    width: 98%;
+    height: 20em;
+    overflow: scroll;
+  }
+  .leaderboard-heading {
+    font-size: 1.5em;
+  }
 }
+
+
+
+
+@media all and (max-width: 390px) {
+  /* Home */
+  .user-detail-container {
+    height: 10em;
+    width: 17em;
+    margin-top: 4em;
+  }
+  .home-heading {
+    font-size: 2.5em;
+  }
+  /* question  */
+  .score-keeper > h2 {
+    font-size: 25px;
+  }
+  .score-keeper {
+    margin-top: 20px;
+  }
+  .question-box {
+    background-size: 98% 305px ;
+    font-size: 0.75em;
+    margin-top: 10px;
+   }
+   /* Answers */
+   .ans-button-grid > button {
+    font-size: 0.75em;
+    margin-top: 2px;
+    width: 70%;
+    height: 70%;
+  }
+   /* Result */
+  .leaderboard-container {
+    width: 11.5em;
+    height: 20em;
+    overflow: scroll;
+  }
+  .leaderboard-heading {
+    font-size: 1.5em;
+  }
+}
+

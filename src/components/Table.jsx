@@ -7,6 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
+
 export default function BasicTable({ leaderBoardData }) {
   const categoryNames = [
     { id: 9, name: "General Knowledge" },
@@ -45,43 +46,43 @@ export default function BasicTable({ leaderBoardData }) {
   // console.log(categoryNames.map((name) => (name.name))) // gives (24) ['General Knowledge', 'Entertainment: Books', 'Entertainment: Film',...
   // console.log(categoryNames.map((name) => (name.id))) //gives (24) [9, 10, 11, 12, 13, 14, 15...
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 750 }}>
-        <TableHead>
-          <TableRow>
+    <TableContainer component={Paper} >
+      <Table sx={{ minWidth: 750 }} >
+        <TableHead >
+          <TableRow >
             <TableCell
               align="center"
-              style={{ fontSize: "1.3rem", fontWeight: "bold" }}
+              style={{ fontSize: "1.2rem", fontWeight: "bold" }}
             >
               Player Name
             </TableCell>
             <TableCell
               align="center"
-              style={{ fontSize: "1.3rem", fontWeight: "bold" }}
+              style={{ fontSize: "1.2rem", fontWeight: "bold" }}
             >
               Category
             </TableCell>
             <TableCell
               align="center"
-              style={{ fontSize: "1.3rem", fontWeight: "bold" }}
+              style={{ fontSize: "1.2rem", fontWeight: "bold" }}
             >
               Type
             </TableCell>
             <TableCell
               align="center"
-              style={{ fontSize: "1.3rem", fontWeight: "bold" }}
+              style={{ fontSize: "1.2rem", fontWeight: "bold" }}
             >
               Difficulty
             </TableCell>
             <TableCell
               align="center"
-              style={{ fontSize: "1.3rem", fontWeight: "bold" }}
+              style={{ fontSize: "1.2rem", fontWeight: "bold" }}
             >
               Number of Questions
             </TableCell>
             <TableCell
               align="center"
-              style={{ fontSize: "1.3rem", fontWeight: "bold" }}
+              style={{ fontSize: "1.2rem", fontWeight: "bold" }}
             >
               Final Score
             </TableCell>
@@ -101,23 +102,23 @@ export default function BasicTable({ leaderBoardData }) {
               >
                 {person.playerName}
               </TableCell>
-              <TableCell align="center" style={{ fontSize: "1.1rem" }}>
+              <TableCell align="center" style={{ fontSize: "1rem" }}>
                 {categoryName[index] ? categoryName[index] : "Mixed Category"}
               </TableCell>
-              <TableCell align="center" style={{ fontSize: "1.1rem" }}>
+              <TableCell align="center" style={{ fontSize: "1rem" }}>
                 {person.type === "boolean"
                   ? "True / False"
                   : person.type === "multiple"
                   ? "Multiple Choice"
                   : "True / False and Multiple Choice"}
               </TableCell>
-              <TableCell align="center" style={{ fontSize: "1.1rem" }}>
+              <TableCell align="center" style={{ fontSize: "1rem" }}>
                 {person.difficulty ? person.difficulty : "Mixed"}
               </TableCell>
-              <TableCell align="center" style={{ fontSize: "1.1rem" }}>
+              <TableCell align="center" style={{ fontSize: "1rem" }}>
                 {person.noOfQuestion}
               </TableCell>
-              <TableCell align="center" style={{ fontSize: "1.1rem" }}>
+              <TableCell align="center" style={{ fontSize: "1rem" }}>
                 {person.score}
               </TableCell>
             </TableRow>
