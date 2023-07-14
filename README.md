@@ -16,7 +16,7 @@ Quiz Whizz is a web application that allows players to test their knowledge by t
 
 ## Deployed Link
 
-The application is deployed and can be accessed at: [Quiz Whizz](https://64b0885180313555399f9379--peppy-swan-96d8e4.netlify.app/)
+The application is deployed and can be accessed at: [Quiz Whizz](https://main--peppy-swan-96d8e4.netlify.app/)
 
 ## Features
 
