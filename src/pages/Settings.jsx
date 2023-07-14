@@ -81,7 +81,9 @@ const Settings = () => {
           <FieldText name="No of Questions" onChange={setNoOfQuestion} />
 
           <Box mt={5}>
-            <Button type="submit" variant="contained" sx={{ bgcolor: "green" }}>
+            <Button type="submit" 
+            className="questions-btn"
+            variant="contained" sx={{ bgcolor: "green" }}>
               {" "}
               Get Started{" "}
             </Button>

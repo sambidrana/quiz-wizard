@@ -141,7 +141,7 @@
 }
 
 /* Media specific */
-@media all and (max-width: 1100px) {
+@media all and (max-width: 41100px) {
  /* Home */
  .user-detail-container {
   height: 10em;
@@ -181,7 +181,7 @@
 }
 }
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 7750px) {
 /* Home */
 .user-detail-container {
   height: 10em;
@@ -221,7 +221,7 @@
 }
 }
 
-@media all and (max-width: 550px) {
+@media all and (max-width: 4550px) {
   /* Home */
   .user-detail-container {
     height: 10em;
@@ -259,48 +259,82 @@
   .leaderboard-heading {
     font-size: 1.5em;
   }
-}
+} 
+
+/*++++++++++++++++++++++++++++++++ Current working  ++++++++++++++++++++++++++++++++*/
 
 
-
-
-@media all and (max-width: 390px) {
+@media all and (max-width: 576px) {
+  /* Nav */
+  .navbar {
+    padding: 10px;
+    margin-top: 2px;
+  }
+  .nav-leaderboard {
+    font-size: 1em;
+  }
+  .nav-settings {
+    font-size: 1em;
+  }
   /* Home */
   .user-detail-container {
     height: 10em;
-    width: 17em;
-    margin-top: 4em;
+    width: 98%;
+    margin-top: 1em;
   }
   .home-heading {
-    font-size: 2.5em;
+    font-size: 2em;
+    margin-bottom: 2em;
   }
+  /* Settings Container */
+.settings-container {
+  padding: 20px;
+  margin-top: 50px;
+ }
+ .question-select-field{
+  font-size: .75em !important;
+ }
   /* question  */
   .score-keeper > h2 {
-    font-size: 25px;
+    font-size: 1.1em;
   }
-  .score-keeper {
-    margin-top: 20px;
-  }
+
   .question-box {
-    background-size: 98% 305px ;
-    font-size: 0.75em;
-    margin-top: 10px;
+    background-size: 98% 94% ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.70em;
+   }
+   .questions-btn {
+    font-size: 0.6em !important;
    }
    /* Answers */
    .ans-button-grid > button {
-    font-size: 0.75em;
-    margin-top: 2px;
-    width: 70%;
-    height: 70%;
+    font-size: 0.5em;
+    width: 150px; 
+    height: 40px; 
   }
    /* Result */
   .leaderboard-container {
-    width: 11.5em;
-    height: 20em;
+    width: 98%;
     overflow: scroll;
   }
   .leaderboard-heading {
     font-size: 1.5em;
+  }
+  .display-result {
+    font-size: 1.2em;
+  }
+  .result-btn {
+    font-size: .7em !important;
+  }
+  /* Table */
+  .table-cell-heading {
+    font-size: 0.6em !important;
+  }
+  .table-cell {
+    font-size: 0.5em !important;
   }
 }
 

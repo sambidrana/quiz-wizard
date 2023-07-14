@@ -48,13 +48,13 @@ const Result = () => {
   return (
     <Box>
   <h2 className="leaderboard-heading">Leaderboard</h2>
-  {localStorage.getItem("Playername") && noOfQuestion ? <h2> {localStorage.getItem("Playername")} you answered {score} out of {noOfQuestion} questions correctly</h2> : null}
+  {localStorage.getItem("Playername") && noOfQuestion ? <h2 className="display-result"> {localStorage.getItem("Playername")} you answered {score} out of {noOfQuestion} questions correctly</h2> : null}
   {localStorage.getItem("Playername") ? (
     <Box mb={5}>
-      <Button variant="contained" color="primary" onClick={handlePlayAgain} sx={{ marginRight: '10px' }}>
+      <Button className="result-btn" variant="contained" color="primary" onClick={handlePlayAgain} sx={{ marginRight: '10px' }}>
         Play again
       </Button>
-      <Button variant="contained" color="secondary" onClick={handleEndGame}>
+      <Button className="result-btn" variant="contained" color="secondary" onClick={handleEndGame}>
         End game
       </Button>
     </Box>

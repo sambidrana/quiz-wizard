@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, FormControl, MenuItem, InputLabel, Select } from "@mui/material";
+import { Box, FormControl, MenuItem, InputLabel, Select, CircularProgress } from "@mui/material";
 
 const SelectField = (props) => {
   const { name, categories, onChange } = props;
@@ -12,6 +12,11 @@ const SelectField = (props) => {
     }
   }, [categories]);
 
+  if(isLoading) {
+    <Box>
+      <CircularProgress />
+    </Box>
+  };
 
   const _handleSelectChange = (e) => {
     const selectedValue = e.target.value;
@@ -26,6 +31,7 @@ const SelectField = (props) => {
       <InputLabel> {name} </InputLabel>
       <Select fullWidth
         value={selectedOption}
+        className="question-select-field"
         onChange={_handleSelectChange}
         color="secondary"
         sx={{  fontSize: '30px' }} 
@@ -33,7 +39,7 @@ const SelectField = (props) => {
       >
         {Array.isArray(categories) &&
           categories.map((category) => (
-            <MenuItem key={category.id} value={category.id}>
+            <MenuItem key={category.id} value={category.id} className="question-select-field">
               {category.name}
             </MenuItem>
           ))}
