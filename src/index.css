@@ -14,7 +14,7 @@
 html,
 body {
   font-family: "Caveat", cursive;
-  margin: 0;
+  margin: 0 auto;
 }
 /* Navbar */
 .navbar {
@@ -319,6 +319,8 @@ body {
   .nav-home,
   .nav-settings {
     font-size: 1.5em;
+    color: green;
+
   }
   /* Home */
   .user-detail-container {
@@ -403,6 +405,8 @@ body {
   .nav-home,
   .nav-settings {
     font-size: 1.1em;
+    color: red;
+
   }
   /* Home */
   .user-detail-container {
