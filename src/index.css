@@ -166,7 +166,7 @@ body {
     margin-top: 80px;
   }
   .question-select-field {
-    font-size: 1.8em !important;
+    font-size: 1.4em !important;
   }
   .questions-btn {
     font-size: 1.2em !important;
@@ -444,11 +444,11 @@ body {
   }
   /* Answers */
   .ans-button-grid {
-    margin-top: 0;
+    margin: 0 auto;
   }
   .ans-button-grid > button {
     font-size: 0.6em;
-    width: 175px;
+    width: 170px;
   }
   .answer {
     letter-spacing: 1px;
