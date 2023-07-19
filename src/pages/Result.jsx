@@ -18,16 +18,30 @@ const Result = () => {
     getData();
   }, []);
 
+  const calculatePercentage = (score, noOfQuestion) => {
+    return ((score / parseInt(noOfQuestion)) * 100).toFixed(2);
+  };
+
   const getData = async () => {
     const data = await getDocs(databaseRef);
     const sortedData = data.docs
       .map((doc) => ({ ...doc.data(), id: doc.id }))
       .sort((a, b) => parseFloat(b.score) - parseFloat(a.score)); // Sort leaderboard according to highest score
+
     const top10Scores = sortedData.slice(0, 10); // Retrieve top 10 scores
-    setLeaderBoardData(top10Scores);
+
+    // Calculate the percentage for each item in the top10Scores array
+    const top10ScoresWithPercentage = top10Scores.map((item) => ({
+      ...item,
+      percentage: calculatePercentage(item.score, item.noOfQuestion),
+    }));
+
+    // Sort top10ScoresWithPercentage based on the percentage property in descending order
+    const sortedTop10Scores = top10ScoresWithPercentage.sort((a, b) => b.percentage - a.percentage);
+
+    setLeaderBoardData(sortedTop10Scores);
     setLoading(false);
   };
-
   const handlePlayAgain = () => {
     navigate("/settings");
   };

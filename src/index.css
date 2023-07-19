@@ -80,6 +80,10 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.448);
   box-shadow: 0 0 10px white;
 }
+.settings-welcome {
+  font-size: 3em;
+  text-shadow: 5px 5px 2px white;
+}
 /* Question and Answers Container */
 .question-box {
   height: 320px;
@@ -170,9 +174,6 @@ body {
   }
   .questions-btn {
     font-size: 1.2em !important;
-  }
-  .settings-welcome {
-    font-size: 3em;
   }
   /* question  */
   .score-keeper > h2 {
@@ -319,8 +320,6 @@ body {
   .nav-home,
   .nav-settings {
     font-size: 1.5em;
-    color: green;
-
   }
   /* Home */
   .user-detail-container {
@@ -405,14 +404,11 @@ body {
   .nav-home,
   .nav-settings {
     font-size: 1.1em;
-    color: red;
-
   }
   /* Home */
   .user-detail-container {
     height: 9em;
     width: 15em;
-    /* margin-top: 1em; */
   }
   .home-heading {
     font-size: 2em;
@@ -449,10 +445,12 @@ body {
   /* Answers */
   .ans-button-grid {
     margin: 0 auto;
+    gap: 6px;
+
   }
   .ans-button-grid > button {
     font-size: 0.6em;
-    width: 170px;
+    width: 160px;
   }
   .answer {
     letter-spacing: 1px;
