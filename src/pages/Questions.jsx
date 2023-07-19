@@ -102,7 +102,7 @@ const Questions = () => {
         </h2>
       </div>
       <div className="question-box">
-        <h2>
+        <h2 className="question-container">
           <strong className="question-strong">
             Qus. {currentQuestionIndex + 1}:
           </strong>{" "}
@@ -118,9 +118,8 @@ const Questions = () => {
             }
             variant="contained"
             color="success"
-            sx={{ width: "300px", marginBottom: "16px" }}
           >
-            {decode(answer)}
+            <span className="answer">{decode(answer)}</span>
           </Button>
         ))}
       </Box>

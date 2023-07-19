@@ -83,7 +83,7 @@ export default function BasicTable({ leaderBoardData }) {
             </TableCell>
             <TableCell
               align="center"
-              className="table-cell"
+              className="table-cell-heading"
               style={{ fontSize: "1.2rem", fontWeight: "bold" }}
             >
               Final Score

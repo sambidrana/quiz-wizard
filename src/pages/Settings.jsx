@@ -64,7 +64,7 @@ const Settings = () => {
 
   return (
     <div>
-      {playerName ? <h1>Welcome, {playerName}</h1> : <CircularProgress />}
+      {playerName ? <h1 className="settings-welcome">Welcome, {playerName}</h1> : <CircularProgress />}
       <div className="settings-container">
         <form onSubmit={hadleFormSubmit}>
           <SelectField
